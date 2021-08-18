@@ -10,7 +10,6 @@ import {
 } from "./../SearchSlice";
 import { Wrapper } from "./styled";
 import { MediumTile } from "./../../../common/Tile/MediumTile";
-import { NoResult } from "./../../../common/NoResult/index";
 import noPoster from "./../../../assets/noPoster.svg";
 import noProfile from "./../../../assets/noProfile.svg";
 
@@ -33,9 +32,7 @@ export const DynamicBox = ({ query }) => {
     <Wrapper>
       {loading ? (
         <Loading />
-      ) : !results.length ? (
-        <NoResult urlQuery={query} />
-      ) : (
+      ):(
         results.map((result) => (
           <MediumTile 
             key={result.id}
