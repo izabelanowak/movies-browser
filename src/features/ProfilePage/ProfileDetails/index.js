@@ -1,13 +1,13 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import { selectGenresList } from "../../../common/commonSlice";
+import { genres } from "../../genres";
 import { apiImage, apiKey } from "../../../common/commonValues";
 import { Header, Section } from "../../../common/Container";
 import { BigTile } from "../../../common/Tile/BigTile";
 import { MediumTile } from "../../../common/Tile/MediumTile";
 import { StyledLink } from "../../../common/StyledLink";
 import { toMovie } from "../../../common/routes";
-import { getGenresNames } from "../../getGenresNames";
+import { getGenreNames } from "../../getGenresNames";
 import { getYearFromDate } from "../../getYearFromDate";
 import { selectAdditionalData, selectItemData } from "../../../features/itemSlice";
 import noProfile from "../../../assets/noProfile.svg";
@@ -16,7 +16,6 @@ import noPoster from "../../../assets/noPoster.svg";
 const ProfileDetails = () => {
     const movieAdditionalData = useSelector(selectAdditionalData);
     const personData = useSelector(selectItemData);
-    const genres = useSelector(selectGenresList);
 
     return (
         <>
@@ -57,7 +56,7 @@ const ProfileDetails = () => {
                                     }
                                     tags={
                                         !!movie.genre_ids &&
-                                        getGenresNames(movie.genre_ids, genres)
+                                        getGenreNames(movie.genre_ids, genres)
                                     }
                                     rating={movie.vote_average}
                                     votes={movie.vote_count}
@@ -91,7 +90,7 @@ const ProfileDetails = () => {
                                     }
                                     tags={
                                         !!movie.genre_ids &&
-                                        getGenresNames(movie.genre_ids, genres)
+                                        getGenreNames(movie.genre_ids, genres)
                                     }
                                     rating={movie.vote_average}
                                     votes={movie.vote_count}

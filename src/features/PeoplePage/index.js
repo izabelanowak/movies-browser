@@ -9,6 +9,7 @@ import Pagination from "./../../common/Pagination/index";
 import { StatusChecker } from "./../../common/StatusChecker/index";
 import { NoResult } from "./../../common/NoResult";
 import { pageState } from "./../../common/pageState";
+import { selectGenerateList } from "./../../common/commonSlice";
 import { usePageParameter } from "./../usePageParameters";
 import { apiImage, apiKey } from "../../common/commonValues";
 import noProfile from "../../assets/noProfile.svg";
@@ -30,12 +31,13 @@ const PeoplePage = () => {
   const resultsPage = useSelector(selectList);
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
+  const generateList = useSelector(selectGenerateList);
 
   useEffect(() => {
     dispatch(fetchList({ page, urlQuery, type: "people" }));
 
     return () => resetState();
-  }, [urlQuery, dispatch, page]);
+  }, [urlQuery, dispatch, generateList, page]);
 
   return (
     <Container>
